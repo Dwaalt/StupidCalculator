@@ -6,8 +6,13 @@ When using it, please note the increasing error, it is better to use numbers sma
 
 Supports:
 + sum
+
 - minus and unary minus
+
 * multiplication
+
 / division
+
 ** ascending
+
 () - parentheses
