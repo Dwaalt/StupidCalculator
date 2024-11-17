@@ -1,4 +1,4 @@
-﻿#include <iostream>
+#include <iostream>
 #include <vector>
 #include <algorithm>
 #include <map>
@@ -19,18 +19,26 @@ int main() {
     prio["("] = -1;
     prio[")"] = -1;
 
+l1:
+
     while (true) {
         std::string str, nstr = "", polStr = "";
         std::stringstream ss;
 
         std::getline(std::cin, str);
+        if (str == "") {
+            goto l1;
+        }
+        else if (str == "close") {
+            return 0;
+        }
         std::stack<char> tp; tp.push(' ');
 
         for (int i = 0; i < str.size(); i++) {
             if (str[i] == '+' || str[i] == '-' || str[i] == '*' || str[i] == '/') {
                 if (i == 0 || i == str.size() - 1) {
                     std::cout << "WRONG" << std::endl;
-                    return 0;
+                    goto l1;
                 }
                 else if (str[i - 1] == '*' && str[i] == '*') {
                     nstr.pop_back();
@@ -72,13 +80,13 @@ int main() {
             }
             else {
                 std::cout << "WRONG" << std::endl;
-                return 0;
+                goto l1;
             }
         }
 
         if (tp.top() != ' ') {
             std::cout << "WRONG" << std::endl;
-            return 0;
+            goto l1;
         }
 
         ss << nstr;
@@ -94,7 +102,7 @@ int main() {
                 if (!a.empty()) {
                     if ((a.top() == "+" || a.top() == "-" || a.top() == "*" || a.top() == "(" || a.top() == "**" || a.top() == "/") && prevOp) {
                         std::cout << "WRONG" << std::endl;
-                        return 0;
+                        goto l1;
                     }
                     while (!a.empty()) {
                         if (prio[s] > prio[a.top()]) {
@@ -113,7 +121,7 @@ int main() {
                 if (s == ")") {
                     if ((a.top() == "+" || a.top() == "-" || a.top() == "*" || a.top() == "**" || a.top() == "/") && prevOp) {
                         std::cout << "WRONG" << std::endl;
-                        return 0;
+                        goto l1;
                     }
                     while (a.top() != "(") {
                         polStr += a.top() + " ";
