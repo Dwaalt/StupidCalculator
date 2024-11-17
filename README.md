@@ -5,14 +5,14 @@ Stupidly simple calculator what counting elementary arithmetic expressions.
 When using it, please note the increasing error, it is better to use numbers smaller than 10^16.
 
 Supports:
-+ sum
+[+] sum
 
-- minus and unary minus
+[-] minus and unary minus
 
-* multiplication
+[*] multiplication
 
-/ division
+[/] division
 
-** ascending
+[**] ascending
 
-() - parentheses
+[()] - parentheses
